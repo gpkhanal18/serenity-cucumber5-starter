@@ -5,7 +5,7 @@ Feature: Check Links For Components
     When I click "Checkboxes" link
     Then I should be navigated to the checkboxes page
 
-  Scenario: Clicking on a Basic Auth Link
+  Scenario: Clicking on a Frames Link
     Given I am on a homepage of heroku app
     When I click "Frames" link
     Then I should be navigated to the frames page

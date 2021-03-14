@@ -1,12 +1,12 @@
-package starter.stepdefinitions;
+package starter.heroku.pages.stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import starter.heroku.pages.CheckboxPage;
-import starter.heroku.pages.FramesPage;
-import starter.heroku.pages.HomePage;
+import starter.heroku.pages.step.CheckboxPage;
+import starter.heroku.pages.step.FramesPage;
+import starter.heroku.pages.step.HomePage;
 
 public class HerokuPageStepDef {
 

@@ -1,4 +1,4 @@
-package starter.heroku.pages;
+package starter.heroku.pages.step;
 
 import net.thucydides.core.annotations.Step;
 import starter.heroku.pages.pageobject.HomePageObjectModel;
