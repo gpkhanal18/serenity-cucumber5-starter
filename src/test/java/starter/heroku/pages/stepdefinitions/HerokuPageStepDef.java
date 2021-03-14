@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import starter.heroku.pages.rest.RestCallGetBooks;
 import starter.heroku.pages.step.CheckboxPage;
 import starter.heroku.pages.step.FramesPage;
 import starter.heroku.pages.step.HomePage;
@@ -16,6 +17,8 @@ public class HerokuPageStepDef {
     CheckboxPage checkboxPage;
     @Steps
     FramesPage framesPage;
+    @Steps
+    RestCallGetBooks restCallGetBooks;
 
     @Given("I am on a homepage of heroku app")
     public void i_am_on_a_homepage_of_heroku_app() {
@@ -38,5 +41,13 @@ public class HerokuPageStepDef {
         framesPage.verifyFramesPageIsDisplayed();
     }
 
+    @Then("REST Call is made to get books")
+    public void rest_Call_is_made_to_get_books() {
+        restCallGetBooks.makeaGetCall();
+    }
 
+    @Then("the book {string} is received in the response")
+    public void the_book_is_received_in_the_response(String string) {
+        restCallGetBooks.validateResponse();
+    }
 }
