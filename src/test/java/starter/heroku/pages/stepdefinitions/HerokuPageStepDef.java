@@ -39,6 +39,15 @@ public class HerokuPageStepDef {
     @Then("I should be navigated to the frames page")
     public void i_should_be_navigated_to_the_frames_page() {
         framesPage.verifyFramesPageIsDisplayed();
+        String referenceNumber = RestCallGetBooks.getReferenceNumber();
+        System.out.println("reference number **********************");
+        System.out.println("reference number **********************");
+        System.out.println("reference number **********************");
+        System.out.println("is " + referenceNumber);
+        System.out.println("reference number **********************");
+        System.out.println("reference number **********************");
+        System.out.println("reference number **********************");
+        System.out.println("reference number **********************");
     }
 
     @Then("REST Call is made to get books")

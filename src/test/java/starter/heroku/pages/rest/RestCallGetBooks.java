@@ -1,16 +1,7 @@
 package starter.heroku.pages.rest;
 
-import io.restassured.RestAssured;
-import io.restassured.specification.RequestSpecification;
-import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
-import net.thucydides.core.ThucydidesSystemProperty;
-import net.thucydides.core.annotations.Managed;
+import io.restassured.response.Response;
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.util.EnvironmentVariables;
-import net.thucydides.core.util.SystemEnvironmentVariables;
-import org.apache.http.HttpStatus;
-import org.hamcrest.Matchers;
-import org.springframework.beans.factory.annotation.Value;
 import util.GetEnvironmentVariable;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
@@ -19,13 +10,21 @@ import static org.hamcrest.CoreMatchers.containsString;
 
 public class RestCallGetBooks {
 
+    static String referenceNumber;
+
+    public static String getReferenceNumber() {
+        return referenceNumber;
+    }
+
     String resource = "/works/OL45883W.json";
-    String baseUrlFromConfig = GetEnvironmentVariable.getEnvironmentVariable("rest.base.url");
+    String restBaseUrl = GetEnvironmentVariable.getEnvironmentVariable("rest.base.url");
 
     @Step
     public void makeaGetCall(){
-        rest().get(baseUrlFromConfig+resource);
-       }
+        String url = restBaseUrl + resource;
+        Response response = rest().get(url);
+        referenceNumber = response.getBody().asString();
+    }
 
     @Step
     public void validateResponse(){
