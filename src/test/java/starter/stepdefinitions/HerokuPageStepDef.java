@@ -8,7 +8,7 @@ import starter.heroku.pages.CheckboxPage;
 import starter.heroku.pages.FramesPage;
 import starter.heroku.pages.HomePage;
 
-public class HerokuPage {
+public class HerokuPageStepDef {
 
     @Steps
     HomePage homePage;
