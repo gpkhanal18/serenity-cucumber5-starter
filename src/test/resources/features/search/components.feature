@@ -11,7 +11,8 @@ Feature: Check Links For Components
     Then I should be navigated to the frames page
 
   Scenario: Making a Rest Call
-    Given REST Call is made to get books
+    Given REST Call is made to post posts
+    And REST Call is made to get books
     When the book "The GodFather" is received in the response
     Then I am on a homepage of heroku app
     And I click "Frames" link

@@ -1,5 +1,6 @@
 package starter.heroku.pages.stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -53,6 +54,11 @@ public class HerokuPageStepDef {
     @Then("REST Call is made to get books")
     public void rest_Call_is_made_to_get_books() {
         restCallGetBooks.makeaGetCall();
+    }
+
+    @And("REST Call is made to post posts")
+    public void rest_call_is_made_to_posts_post(){
+        restCallGetBooks.makeaPostCall();
     }
 
     @Then("the book {string} is received in the response")

@@ -1,6 +1,7 @@
 package starter.heroku.pages.rest;
 
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import net.thucydides.core.annotations.Step;
 import util.GetEnvironmentVariable;
 
@@ -31,5 +32,16 @@ public class RestCallGetBooks {
         System.out.println("inside validateResponse");
         then().assertThat().content(containsString("Fantastic Mr. Fox"));
         then().statusCode(200).body("description", containsString("Fox"));
+    }
+
+    @Step
+    public void makeaPostCall(){
+        postRequest postRequest = new postRequest("apple", "ball", "cat");
+        RequestSpecification request = rest();
+        request.header("Content-Type", "application/json");
+        request.body(postRequest);
+        Response response = request.post("https://jsonplaceholder.typicode.com/post");
+        System.out.println("post response body is " + response.getBody());
+        System.out.println("post response is " + response);
     }
 }
