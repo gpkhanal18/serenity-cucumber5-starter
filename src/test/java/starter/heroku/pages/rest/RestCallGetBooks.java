@@ -39,7 +39,7 @@ public class RestCallGetBooks {
     }
 
     @Step
-    public void validateBookIsPresent(){
+    public void validateBookIsPresent(String string){
         System.out.println("inside validateResponse");
         then().assertThat().content(containsString("Fantastic Mr. Fox"));
         then().statusCode(200).body("description", containsString("Fox"));
