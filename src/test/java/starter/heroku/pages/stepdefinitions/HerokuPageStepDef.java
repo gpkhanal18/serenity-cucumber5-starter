@@ -63,6 +63,6 @@ public class HerokuPageStepDef {
 
     @Then("the book {string} is received in the response")
     public void the_book_is_received_in_the_response(String string) {
-        restCallGetBooks.validateResponse();
+        restCallGetBooks.validateBookIsPresent();
     }
 }

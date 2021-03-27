@@ -3,11 +3,15 @@ package starter.heroku.pages.rest;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.thucydides.core.annotations.Step;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import util.GetEnvironmentVariable;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
 import static net.serenitybdd.rest.SerenityRest.then;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 public class RestCallGetBooks {
 
@@ -23,15 +27,25 @@ public class RestCallGetBooks {
     @Step
     public void makeaGetCall(){
         String url = restBaseUrl + resource;
+        String countryURl = GetEnvironmentVariable.getEnvironmentVariable("country.url");
+        System.out.println("country.url is="+ countryURl);
+        Response response2 = rest().given()
+                .pathParam("country", "india")
+                .when()
+                .get(countryURl);
+        System.out.println("response 2 is " + response2);
         Response response = rest().get(url);
         referenceNumber = response.getBody().asString();
     }
 
     @Step
-    public void validateResponse(){
+    public void validateBookIsPresent(){
         System.out.println("inside validateResponse");
         then().assertThat().content(containsString("Fantastic Mr. Fox"));
         then().statusCode(200).body("description", containsString("Fox"));
+        assertThat("gopal", is("gopal"));
+//        assertEquals("gopal", "khanal");
+//        GetEnvironmentVariable.validateDates();
     }
 
     @Step
