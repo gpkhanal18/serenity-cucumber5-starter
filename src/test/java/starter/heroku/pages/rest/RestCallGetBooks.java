@@ -2,10 +2,13 @@ package starter.heroku.pages.rest;
 
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Step;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import util.GetEnvironmentVariable;
+
+import java.nio.file.Path;
 
 import static net.serenitybdd.rest.SerenityRest.rest;
 import static net.serenitybdd.rest.SerenityRest.then;
@@ -33,6 +36,7 @@ public class RestCallGetBooks {
                 .pathParam("country", "india")
                 .when()
                 .get(countryURl);
+        Serenity.recordReportData().withTitle("Customized Report").andContents("gopal added in the report");
         System.out.println("response 2 is " + response2);
         Response response = rest().get(url);
         referenceNumber = response.getBody().asString();
