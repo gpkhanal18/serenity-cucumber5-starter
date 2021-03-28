@@ -10,6 +10,8 @@ Feature: Check Links For Components
     When I click "Frames" link
     Then I should be navigated to the frames page
 
+@title("userstory")
+  @issue:WTG-4567
   Scenario: Making a Rest Call
     Given REST Call is made to post posts
     And REST Call is made to get books
