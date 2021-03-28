@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.serenitybdd.core.Serenity;
 import net.thucydides.core.annotations.Steps;
 import starter.heroku.pages.rest.RestCallGetBooks;
 import starter.heroku.pages.step.CheckboxPage;
@@ -40,6 +41,7 @@ public class HerokuPageStepDef {
     @Then("I should be navigated to the frames page")
     public void i_should_be_navigated_to_the_frames_page() {
         framesPage.verifyFramesPageIsDisplayed();
+        Serenity.takeScreenshot();
         String referenceNumber = RestCallGetBooks.getReferenceNumber();
         System.out.println("reference number **********************");
         System.out.println("reference number **********************");
